@@ -60,7 +60,6 @@ const store = new Vuex.Store({
     },
 
     setShow: (state) => {
-      console.log(state)
       if(state.sKey === ''){
         state.showData = state.goodsData
       }else{
@@ -80,22 +79,13 @@ const store = new Vuex.Store({
         data[0].number = 1
         obj.shopping.push(...data)
       }else{
-        obj.shopping.map(item => {
+        obj.shopping = obj.shopping.map(item => {
           if(item.key === data[0].key){
             item.number ++
-            return
           }
+          return item
         })
       }
-    },
-
-    allPay: (state) => {
-      const obj = state
-      let pay = 0;
-      obj.shopping.map(item => {
-         pay += (parseInt(item.price) * item.number)
-      })
-      state.showPay = pay
     }
 
   },
@@ -103,6 +93,23 @@ const store = new Vuex.Store({
   getters: {
     loading: (state) => {
       return state.loading
+    },
+    redPoint: (state) => {
+      let pointNumber = 0
+      const obj = state
+      if(obj.shopping.length === 0) return 0
+      obj.shopping.map((item)=>{
+        pointNumber += item.number
+      })
+      return pointNumber
+    },
+    allPay: (state) => {
+      const obj = state
+      let pay = 0;
+      obj.shopping.map(item => {
+         pay += (parseInt(item.price) * item.number)
+      })
+      return pay
     }
   }
 })

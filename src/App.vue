@@ -1,6 +1,9 @@
 <script>
 import store from './pages/counter/store.js'
 export default {
+  beforeCreate(){
+    console.log('beforeCreate')
+  },
   created () {
     console.log('created')
     store.commit('getData')
@@ -25,6 +28,7 @@ export default {
   },
   mounted(){
     console.log('mounted')
+    wx.hideToast()
   }
 }
 </script>
@@ -45,6 +49,6 @@ export default {
   -webkit-transition: width 2s;
   -o-transition: width 2s;
   margin: 0;
-  padding: 0
+  padding: 0;
 }
 </style>

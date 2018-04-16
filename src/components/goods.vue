@@ -1,6 +1,6 @@
 <template>
     <div class="goods">
-      <div class="item" v-for="item in goodsData" :key="item.key"  @click="shopping(item)">
+      <div class="item" v-for="item in goodsData" :key="item.key"  @click="shopping(item);changePoint()">
           {{item.name}}
           {{item.price}}
       </div>
@@ -12,6 +12,12 @@
 <script>
   import store from '../pages/counter/store.js'
   export default {
+      created(){
+        wx.setTabBarBadge({
+          index: 1,
+          text: this.redPoint
+      })
+      },
       onReachBottom(){
           this.getData()
       },
@@ -27,14 +33,23 @@
         },
         shopping(data){
             store.commit('shopping',[data])
+        },
+        changePoint(){
+            wx.setTabBarBadge({
+              index: 1,
+              text: this.redPoint
+            })
         }
       },
       computed: {
           loading : () => {
-              return store.getters.loading
+            return store.getters.loading
           },
           goodsData : () => {
-              return store.state.showData
+            return store.state.showData
+          },
+          redPoint: () => {
+            return store.getters.redPoint.toString()
           }
       }
   }

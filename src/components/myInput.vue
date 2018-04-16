@@ -36,6 +36,7 @@ import store from '../pages/counter/store.js'
               const value = this.value
               const index = this.cookie.length
               let set = 0
+              if(value === '') return
               cookie.map((item)=>{
                   if(item === value){
                       set++

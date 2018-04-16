@@ -28,7 +28,7 @@
 import store from '../counter/store.js'
   export default {
     onShow(){
-      store.commit('allPay')
+      // store.commit('allPay')
     },
     data(){
       return {
@@ -41,7 +41,7 @@ import store from '../counter/store.js'
             return store.state.shopping
         },
         showPay: () => {
-          return store.state.showPay
+          return store.getters.allPay
         },
         userName: () => {
           return store.state.userName
