@@ -1,21 +1,8 @@
-# weixin
+# 书城小程序
 
-> vue-weixin
+> mp-vue
 
-## Build Setup
+## 2018.4.19 基本功能完成 V2
+2018.4.20 完成简单动画交互 loading...
 
-``` bash
-# install dependencies
-npm install
 
-# serve with hot reload at localhost:8080
-npm run dev
-
-# build for production with minification
-npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
-```
-
-For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
