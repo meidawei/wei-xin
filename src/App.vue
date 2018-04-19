@@ -1,34 +1,26 @@
 <script>
-import store from './pages/counter/store.js'
+import store from './vuex/store.js'
 export default {
   beforeCreate(){
     console.log('beforeCreate')
   },
   created () {
-    console.log('created')
     store.commit('getData')
     wx.login({
       success: (data) => {
-        console.log(data)
       }
     })
     wx.authorize({
       scope: 'scope.userInfo',
       success: (data) => {
-        console.log(data)
       }
     })
     wx.getUserInfo({
       success: (data) => {
-        console.log(data)
         store.state.userName = data.userInfo.nickName
         store.state.userImgUrl = data.userInfo.avatarUrl
       }
     })
-  },
-  mounted(){
-    console.log('mounted')
-    wx.hideToast()
   }
 }
 </script>

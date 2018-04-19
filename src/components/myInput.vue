@@ -1,7 +1,9 @@
 <template>
   <div class="wrap">
 
-    <input type="text"  ref="searchInput" v-model="value" @blur="toBlur(),setCookie(),sGoods()" @focus="toBlur">
+    <input type="text"  ref="searchInput" v-model="value" @blur="toBlur(),setCookie()" @focus="toBlur">
+
+    <div class="search-icon" @click="setKey(),sGoods()"><img :src="searchIcon" alt=""></div>
 
     <div class="keepOut" :class="{none : !show}">
       {{!value ? DEFAULT_MSG : ''}}
@@ -14,14 +16,15 @@
   </div>
 </template>
 <script>
-import store from '../pages/counter/store.js'
+  import store from '../vuex/store.js'
   export default {
       data(){
           return {
               DEFAULT_MSG: '搜索商品',
               value: '',
               show: true,
-              cookie: []
+              cookie: [],
+              searchIcon: require('../images/search.png')
           }
       },
       methods:{
@@ -30,6 +33,10 @@ import store from '../pages/counter/store.js'
           },
           setValue(data){
               this.value = data
+              store.commit('setSkey',data)
+          },
+          setKey(){
+              store.commit('setSkey',this.value)
           },
           setCookie(){
               const cookie = this.cookie
@@ -47,15 +54,14 @@ import store from '../pages/counter/store.js'
               }
           },
           sGoods(){
-              const data = this.value
-              store.commit('setSkey',{ data })
-              store.commit('setShow')
+              store.commit('getData')
           }
       }
   }
 </script>
 <style lang="less" scoped>
   .wrap{
+      position: relative;
       display: flex;
       flex-flow: column nowrap;
       box-sizing: border-box;
@@ -99,5 +105,16 @@ import store from '../pages/counter/store.js'
   }
   .none{
       display: none
+  }
+  .search-icon{
+      position: absolute;
+      width: 50rpx;
+      height: 50rpx;
+      right: 60rpx;
+      z-index: 9;
+      img{
+          width: 100%;
+          height: 100%;
+      }
   }
 </style>

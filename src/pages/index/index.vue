@@ -9,7 +9,6 @@
 </template>
 
 <script>
-import card from '@/components/card'
 import myInput from '@/components/myInput'
 import goods from '@/components/goods'
 export default {
@@ -18,7 +17,6 @@ export default {
       name: 'index'
     }
   },
-
   components: {
     myInput,
     goods
