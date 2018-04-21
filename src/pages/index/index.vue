@@ -1,6 +1,6 @@
 <template>
-  <div class="container">
-
+  <div>
+    
     <myInput></myInput>
     
     <goods></goods>
@@ -12,6 +12,12 @@
 import myInput from '@/components/myInput'
 import goods from '@/components/goods'
 export default {
+  created(){
+    console.log('首页数据加载完成！')
+  },
+  mounted(){
+    console.log('首页DOM渲染完成！')
+  },
   data () {
     return {
       name: 'index'
@@ -59,5 +65,12 @@ export default {
   padding: 5px 10px;
   color: blue;
   border: 1px solid blue;
+}
+
+.loading-page{
+  position: absolute;
+  width: 750rpx;
+  height: 100%;
+  background: #000
 }
 </style>

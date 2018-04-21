@@ -11,15 +11,27 @@ const getters = {
     })
     return pointNumber
   },
+  
   allPay: (state) => {
     const obj = state
     let pay = 0;
     obj.shopping.map(item => {
       const price = parseFloat(item.price.match(/[\d.]/g).toString().replace(/,/g,'')) 
-      console.log(price)
       pay += ( price * item.number)
     })
     return pay.toFixed(2)
+  },
+  bookNumber: (state) => {
+    const obj = state
+    console.log(obj.shopping)
+    let number = obj.shopping.length === 0 ? 0 : obj.shopping.filter((item)=>{
+      return obj.bookInfo[0].id === item.id
+    })
+    if(!number.length){
+      return 0
+    }else{
+      return number = number[0].number
+    }
   }
 }
 export default getters

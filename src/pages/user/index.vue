@@ -53,6 +53,15 @@
 <script>
   import store from '@/vuex/store.js'
   export default {
+    created(){
+      console.log("用户页数据加载完成！")
+    },
+    mounted(){
+      console.log('用户页DOM渲染完成！')
+    },
+    destroyed(){
+      console.log('用户页destroyed!')
+    },
     data(){
       return {
         name : 'user',
@@ -118,7 +127,7 @@ h3 {
   line-height: 120rpx;
   text-align: center;
   border-left: 2rpx solid #ccc;
-  border-right: 2rpx solid #ccc
+  border-right: 2rpx solid #ccc;
 }
 .user-info {
   display: flex;

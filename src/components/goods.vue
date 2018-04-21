@@ -83,6 +83,10 @@
   margin: 0 auto;
   animation: load-rotate 2s infinite;
 }
+@keyframes load-rotate {
+  0% {transform: rotate(0)}
+  100% {transform: rotate(360deg)}
+}
 .item {
   display: flex;
   flex-flow: column nowrap;
