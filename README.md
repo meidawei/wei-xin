@@ -1,8 +1,11 @@
 # 书城小程序
 
-> mp-vue
+> mpvue框架
 
-## 2018.4.19 基本功能完成 V2
-2018.4.20 完成简单动画交互 loading...
+## 基本功能
+
+[书城]（https://github.com/Niexsir/wei-xin/blob/master/20180421_151426.gif）
+
+## 数据接口用的豆瓣
 
 
